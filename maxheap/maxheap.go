@@ -14,6 +14,8 @@ type Item struct {
 // A PriorityQueue implements heap.Interface and holds Items.
 type PriorityQueue []*Item
 
+func (pq PriorityQueue)Top() int { return pq[pq.Len()-1].value }
+
 func (pq PriorityQueue) Len() int { return len(pq) }
 
 func (pq PriorityQueue) Less(i, j int) bool {
@@ -67,4 +69,28 @@ func CreateMaxHeap(items []int) PriorityQueue {
 	}
 	heap.Init(&pq)
 	return pq
+}
+
+func KthSmallestElements(list[]int, k int) {
+	queue := CreateMaxHeap([]int{})
+
+	for index, value := range list {
+		item := &Item{
+			value: value,
+			index: index,
+		}
+		heap.Push(&queue, item)
+		if queue.Len() > k {
+			_ = heap.Pop(&queue)
+		}
+	}
+
+	for queue.Len() > 0 {
+		val := heap.Pop(&queue).(*Item).value
+		fmt.Println(val)
+	}
+}
+
+func sortKthSortedElement() {
+
 }
