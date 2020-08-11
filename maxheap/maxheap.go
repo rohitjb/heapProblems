@@ -71,7 +71,7 @@ func CreateMaxHeap(items []int) PriorityQueue {
 	return pq
 }
 
-func KthSmallestElements(list[]int, k int) {
+func KthSmallestElements(list []int, k int) {
 	queue := CreateMaxHeap([]int{})
 
 	for index, value := range list {
@@ -91,6 +91,25 @@ func KthSmallestElements(list[]int, k int) {
 	}
 }
 
-func sortKthSortedElement() {
+func SortKsortedElementInDecendingOrder(list []int, k int) []int {
+	queue := CreateMaxHeap([]int{})
+	sortedArray := []int{}
 
+	for index, value := range list {
+		item := &Item{
+			value: value,
+			index: index,
+		}
+		heap.Push(&queue, item)
+		if queue.Len() > k {
+			element := heap.Pop(&queue).(*Item).value
+			sortedArray = append(sortedArray, element)
+		}
+	}
+
+	for queue.Len() > 0 {
+		val := heap.Pop(&queue).(*Item).value
+		sortedArray = append(sortedArray, val)
+	}
+	return sortedArray
 }
