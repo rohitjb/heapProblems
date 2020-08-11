@@ -42,4 +42,4 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run test 
       run: |
-         test --image docker.pkg.github.com/anzx/fabric-images/${IMAGE}:latest --config ./grafna_structural_tests.yaml
+        $HOME/bin/container-structure-test test --image docker.pkg.github.com/anzx/fabric-images/${IMAGE}:latest --config ./grafna_structural_tests.yaml
