@@ -1,0 +1,13 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  env:
+    - key: GF_PATHS_PLUGINS
+      value: /var/lib/grafana-plugins
+    - key: GF_RENDERER_PLUGIN_CHROME_BIN
+      value: /usr/bin/google-chrome
+
+fileExistenceTests:
+  - name: "test if the grafana plugin exist or not"
+    path: "/var/lib/grafana-plugins"
+    shouldExist: true
