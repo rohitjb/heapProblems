@@ -38,7 +38,7 @@ jobs:
       uses: plexsystems/container-structure-test-action@v0.2.0
       with:
         image: docker.pkg.github.com/anzx/fabric-images/${IMAGE}:latest
-        config: grafna_structural_tests.yaml
+        config: ./grafna_structural_tests.yaml
 
 #    # Runs a set of commands using the runners shell
 #    - name: install container structure test
