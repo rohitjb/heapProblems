@@ -23,8 +23,12 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
     # Runs a single command using the runners shell
+    - name: Conftest
+      uses: instrumenta/conftest-action@v0.4.0
+      with:
+        # Files for Conftest to test
+        files: ./Dockerfile
     - name: build image for grafana
       working-directory: grafana
       run: |
