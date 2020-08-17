@@ -30,10 +30,11 @@ jobs:
         # Files for Conftest to test
         files: ./debian9/Dockerfile
     - name: Conftest for grafana dockerfile
+      working-directory: grafana
       uses: instrumenta/conftest-action@v0.4.0
       with:
         # Files for Conftest to test
-        files: ./grafana/Dockerfile
+        files: ./Dockerfile
     - name: build image for grafana
       working-directory: grafana
       run: |
