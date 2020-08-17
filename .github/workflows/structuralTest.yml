@@ -29,7 +29,7 @@ jobs:
       with:
         # Files for Conftest to test
         files: ./debian9/Dockerfile
-    - name: Conftest for debain9 dockerfile
+    - name: Conftest for grafana dockerfile
       uses: instrumenta/conftest-action@v0.4.0
       with:
         # Files for Conftest to test
