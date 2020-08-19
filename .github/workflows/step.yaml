@@ -1,11 +1,6 @@
 name: Structural Tests
 on: [push]
 jobs:
-  setup:
-    name: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -15,6 +10,7 @@ jobs:
       PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel,vonage-status-panel
       IMAGE_RENDERER: true
     steps:
+      - uses: actions/checkout@v2
       - name: build image for grafana
         working-directory: grafana
         run: |
@@ -25,7 +21,7 @@ jobs:
             -t docker.pkg.github.com/anzx/fabric-images/grafana:latest \
             -t docker.pkg.github.com/anzx/fabric-images/${IMAGE}:latest .
   test:
-    name: Running structural tests
+    name: Test
     runs-on: ubuntu-latest
     env:
       IMAGE: grafana
