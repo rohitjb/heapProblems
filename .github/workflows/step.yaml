@@ -1,5 +1,5 @@
 name: Structural Tests
-on: [push, pull_request]
+on: [push]
 jobs:
   setup:
     name: setup
