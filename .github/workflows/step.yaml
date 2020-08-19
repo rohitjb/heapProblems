@@ -11,7 +11,8 @@ jobs:
       IMAGE_RENDERER: true
     steps:
       - uses: actions/checkout@v2
-      - name: build image for grafana
+      - uses: instrumenta/conftest-action@v0.4.0
+        - name: build image for grafana
         working-directory: grafana
         run: |
           docker build \
@@ -31,10 +32,9 @@ jobs:
       IMAGE_RENDERER: true
     steps:
       - name: Conftest for debain9 dockerfile
-        uses: instrumenta/conftest-action@v0.4.0
         with:
           files: ./debian9/Dockerfile
+
       - name: Conftest for grafana dockerfile
-        uses: instrumenta/conftest-action@v0.4.0
         with:
           files: ./grafana/Dockerfile
