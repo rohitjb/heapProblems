@@ -31,6 +31,7 @@ jobs:
       PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel,vonage-status-panel
       IMAGE_RENDERER: true
     steps:
+      - uses: actions/checkout@v2
       - name: Conftest for debain9 dockerfile
         uses: instrumenta/conftest-action@v0.4.0
         with:
