@@ -22,6 +22,7 @@ jobs:
             -t docker.pkg.github.com/anzx/fabric-images/${IMAGE}:latest .
   test:
     name: Test
+    needs: build
     runs-on: ubuntu-latest
     env:
       IMAGE: grafana
