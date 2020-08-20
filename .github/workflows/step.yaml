@@ -6,16 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  test:
-    name: Test
-    needs: build
+  say_hello:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Conftest for debain9 dockerfile
-        uses: instrumenta/conftest-action@v0.4.0
-        with:
-          files: ./debian9/Dockerfile
-      - uses: actions/labeler@v2
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - run: |
+          echo "Hello Rohit!"
+          echo "- in git!"
