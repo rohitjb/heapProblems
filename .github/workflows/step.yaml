@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  test(12/12):
+  test_data(12/12):
     runs-on: ubuntu-latest
     steps:
       - run: |
