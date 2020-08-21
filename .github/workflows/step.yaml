@@ -6,18 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  test_data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
+      - uses: ouzi-dev/commit-status-updater@v1.0.4
         with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      - name: commit-status-updater
-        uses: ouzi-dev/commit-status-updater@v1.0.7
-        with:
-          token:  ${{ github.token }}
-          description: 3 Passed, 2 Fail...
-          name:   ${{ github.workflow }}
-          successComment: Test Test Test
+          status: "pending"
+          addHoldComment: "true"
+          pendingComment: "action pending!"
+          successComment: "action success!"
+          failComment: "action failed!"
