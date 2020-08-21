@@ -1,15 +1,20 @@
 name: Structural Tests
-on: [pull_request]
+on: [push]
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ouzi-dev/commit-status-updater@v1.0.4
+      - name: test
+        uses: instrumenta/conftest-action@master
         with:
-          status: "pending"
-          addHoldComment: "true"
-          pendingComment: "action pending!"
-          successComment: "action success!"
-          failComment: "action failed!"
+          files: ./debian9/Dockerfile
+
+#      - uses: ouzi-dev/commit-status-updater@v1.0.4
+#        with:
+#          status: "pending"
+#          addHoldComment: "true"
+#          pendingComment: "action pending!"
+#          successComment: "action success!"
+#          failComment: "action failed!"
