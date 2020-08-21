@@ -10,6 +10,7 @@ jobs:
         uses: instrumenta/conftest-action@master
         with:
           files: ./debian9/Dockerfile
+          output: json
 
 #      - uses: ouzi-dev/commit-status-updater@v1.0.4
 #        with:
