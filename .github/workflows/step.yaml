@@ -14,8 +14,14 @@ jobs:
         with:
           who-to-greet: 'Mona the Octocat'
         id: hello
-      - name: Test
-        uses: skx/github-action-tester@master
-      - run: |
-          echo "Hello Rohit!"
-          echo "- in git!"
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: 1
+          body: |
+            This is a multi-line test comment
+            - With GitHub **Markdown** :sparkles:
+            - Created by [create-or-update-comment][1]
+
+            [1]: https://github.com/peter-evans/create-or-update-comment
+          reactions: '+1'
