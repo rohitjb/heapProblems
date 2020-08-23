@@ -12,7 +12,8 @@ jobs:
         with:
           files: ./debian9/Dockerfile
           output: json
-
+      - name: show json test
+        run: echo "${{ steps.conftest.with.output }}"
 #      - uses: ouzi-dev/commit-status-updater@v1.0.4
 #        with:
 #          status: "pending"
