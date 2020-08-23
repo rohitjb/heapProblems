@@ -6,16 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test
-        uses: instrumenta/conftest-action@master
+      - name: Hello world action step
+        id: hello
+        uses: actions/hello-world-docker-action@v1
         with:
-          files: ./debian9/Dockerfile
-          output: json
-
-#      - uses: ouzi-dev/commit-status-updater@v1.0.4
-#        with:
-#          status: "pending"
-#          addHoldComment: "true"
-#          pendingComment: "action pending!"
-#          successComment: "action success!"
-#          failComment: "action failed!"
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
