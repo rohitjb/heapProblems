@@ -11,8 +11,10 @@ jobs:
         with:
           files: ./debian9/Dockerfile
           output: json
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
-        id: hello
-        with:
-          who-to-greet: 'Mona the Octocat'
+#      - uses: ouzi-dev/commit-status-updater@v1.0.4
+#        with:
+#          status: "pending"
+#          addHoldComment: "true"
+#          pendingComment: "actions pending!"
+#          successComment: "actions success!"
+#          failComment: "actions failed!"
