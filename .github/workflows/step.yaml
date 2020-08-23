@@ -10,7 +10,6 @@ jobs:
         uses: ./
         with:
           files: ./debian9/Dockerfile
-          output: json
 
 #      - name: test
 #        uses: instrumenta/conftest-actions@master
