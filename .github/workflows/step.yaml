@@ -7,15 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: test
-        uses: ./
+        uses: instrumenta/conftest-actions@master
         with:
           files: ./debian9/Dockerfile
-
-#      - name: test
-#        uses: instrumenta/conftest-actions@master
-#        with:
-#          files: ./debian9/Dockerfile
-#          output: json
+          output: json
 #      - uses: ouzi-dev/commit-status-updater@v1.0.4
 #        with:
 #          status: "pending"
