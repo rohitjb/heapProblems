@@ -6,11 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: test
+        uses: instrumenta/conftest-actions@master
+        id: conftest
+        with:
+          files: ./debian9/Dockerfile
+          output: json
       - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
         id: hello
-        uses: actions/hello-world-docker-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "${{ steps.hello.outputs.time }}"
