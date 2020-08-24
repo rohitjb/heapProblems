@@ -7,7 +7,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup conftest
-        uses: instrumenta/conftest-action@v0.4.0
+        uses: ./
+ #        uses: instrumenta/conftest-action@v0.4.0
       - name: test
         run: conftest test ./debian9/Dockerfile
 #        run: conftest test ./debian9/Dockerfile
