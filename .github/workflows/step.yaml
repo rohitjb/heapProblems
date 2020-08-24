@@ -9,7 +9,8 @@ jobs:
       - name: setup conftest
         uses: ./.github/actions
         with:
-          files: ./grafana/Dockerfile
+          files: ./debian9/Dockerfile
+          output: json
  #        uses: instrumenta/conftest-action@v0.4.0
 #      - name: test
 #        run: conftest test ./debian9/Dockerfile
