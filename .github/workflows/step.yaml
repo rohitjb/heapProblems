@@ -14,6 +14,15 @@ jobs:
           output: json
       - name: show json test
         run: echo "${{ steps.conftest.outputs.output }}"
+
+      - run: mkdir -p artifact
+      - run: echo hello motu > artifact/world.txt
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: artifact/world.txt
+
 #      - uses: ouzi-dev/commit-status-updater@v1.0.4
 #        with:
 #          status: "pending"
