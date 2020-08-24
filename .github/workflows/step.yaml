@@ -6,32 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test
-        id: conftest
-        uses: instrumenta/conftest-action@v0.4.0
-        run: conftest test ./debian9/Dockerfile
-#        with:
-#          files: ./debian9/Dockerfile
-#          output: json
-#      - name: show json test
-#        run: echo
-
-#      - run: mkdir -p artifact
-#      - run: echo hello motu > artifact/world.txt
-
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: my-artifact
-#          path: artifact/world.txt
-
-#      - name: Display structure of downloaded files
-#        run:  ls -R
-#        working-directory: artifact
-
-#      - uses: ouzi-dev/commit-status-updater@v1.0.4
-#        with:
-#          status: "pending"
-#          addHoldComment: "true"
-#          pendingComment: "actions pending!"
-#          successComment: "actions success!"
-#          failComment: "actions failed!"
+      - name: Hello world action step
+        uses: ./
+        id: hello
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
