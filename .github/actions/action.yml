@@ -20,11 +20,13 @@ inputs:
   output:
     description: "Output format for results"
     default: "stdout"
+outputs:
+  time:
+    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'docker://instrumenta/conftest:latest'
-  entrypoint: sh
+  entrypoint: entrypoint.sh
   args:
     - -c
     - conftest test -o "${{ inputs.output }}" -p "${{ inputs.policy }}" --namespace "${{ inputs.namespace }}" --combine="${{ inputs.combine }}" ${{ inputs.files }} | tee result.txt
-    - echo result.txt
