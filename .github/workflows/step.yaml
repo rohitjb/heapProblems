@@ -3,6 +3,8 @@ on: [push]
 jobs:
   validate:
     runs-on: ubuntu-latest
+    env:
+      FILE: ./debian9/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,7 +16,7 @@ jobs:
           result=$(docker run --rm --workdir /github/workspace \
             -v $(pwd):/github/workspace \
             instrumenta/conftest:v0.18.2 \
-            test ./debian9/Dockerfile -o table || exit 0)
+            test ${FILE} -o stdout || exit 0)
           result="${result//'%'/'%25'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
