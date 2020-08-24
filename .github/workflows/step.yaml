@@ -15,9 +15,9 @@ jobs:
             -v $(pwd):/github/workspace \
             instrumenta/conftest:v0.18.2 \
             test ./debian9/Dockerfile || exit 0)
-#          result="${result//'%'/'%25'}"
-#          result="${result//$'\n'/'%0A'}"
-#          result="${result//$'\r'/'%0D'}"
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
           echo $result
           echo "::set-output name=result::$result"
       - name: Post Results
@@ -31,4 +31,4 @@ jobs:
             ```
             ${{ steps.conftest-stdout.outputs.result }}
             ```
-          check_for_duplicate_msg: true
+          check_for_duplicate_msg: false
