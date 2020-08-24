@@ -28,7 +28,7 @@ jobs:
           result=$(docker run --rm --workdir /github/workspace \
             -v $(pwd):/github/workspace \
             instrumenta/conftest:v0.18.2 \
-            test ${FILE} -o stdout || exit 0)
+            test ${FILE} --output=stdout --all-namespaces || exit 0)
           result="${result//'%'/'%25'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
