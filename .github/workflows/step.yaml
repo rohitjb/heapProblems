@@ -8,5 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Hello world action step
         uses: ./
-        with:
-          files: ./debian9/Dockerfile
+        run: conftest test ./debian9/Dockerfile
+#        with:
+#          files: ./debian9/Dockerfile
