@@ -11,4 +11,3 @@ jobs:
         id: hello
         with:
           who-to-greet: './debian9/Dockerfile'
-        run: conftest test ./debian9/Dockerfile
