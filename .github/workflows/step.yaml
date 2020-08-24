@@ -9,4 +9,4 @@ jobs:
       - name: Hello world action step
         uses: ./
         with:
-          files: ./arrai/Dockerfile
+          files: ./debian9/Dockerfile
