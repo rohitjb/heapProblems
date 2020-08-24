@@ -8,6 +8,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Hello world action step
         uses: ./
-        id: hello
         with:
-          who-to-greet: './debian9/Dockerfile'
+          files: ./arrai/Dockerfile
