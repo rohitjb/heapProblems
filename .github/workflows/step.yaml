@@ -6,8 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Hello world action step
-        uses: ./
+      - name: setup conftest
+        uses: instrumenta/conftest-action@v0.4.0
+      - name: test
         run: conftest test ./debian9/Dockerfile
+#        run: conftest test ./debian9/Dockerfile
 #        with:
 #          files: ./debian9/Dockerfile
