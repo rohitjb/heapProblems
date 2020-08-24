@@ -9,23 +9,24 @@ jobs:
       - name: test
         id: conftest
         uses: instrumenta/conftest-action@v0.4.0
-        with:
-          files: ./debian9/Dockerfile
-          output: json
-      - name: show json test
-        run: echo "${{ steps.conftest.outputs.output }}"
+        run: conftest test ./debian9/Dockerfile
+#        with:
+#          files: ./debian9/Dockerfile
+#          output: json
+#      - name: show json test
+#        run: echo
 
-      - run: mkdir -p artifact
-      - run: echo hello motu > artifact/world.txt
+#      - run: mkdir -p artifact
+#      - run: echo hello motu > artifact/world.txt
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: artifact/world.txt
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: my-artifact
+#          path: artifact/world.txt
 
-      - name: Display structure of downloaded files
-        run: cat ls -R
-        working-directory: artifact
+#      - name: Display structure of downloaded files
+#        run:  ls -R
+#        working-directory: artifact
 
 #      - uses: ouzi-dev/commit-status-updater@v1.0.4
 #        with:
