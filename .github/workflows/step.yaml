@@ -14,25 +14,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: build container test image
-        working-directory: .github/actions
-        run: |
-          docker build \
-            -t container-structure-test:latest .
-      - name: build image
-        working-directory: arrai
-        run: |
-          docker build \
-            -t arrai:latest .
-      - name: test structure
-        id: container-stdout
-        run: |
-          result=$(docker run --rm -v $(pwd):/test-config container-structure-test:latest test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
-          result="${result//'%'/'%25'}"
-          result="${result//$'\n'/'%0A'}"
-          result="${result//$'\r'/'%0D'}"
-          echo $result
-          echo "::set-output name=result::$result"
       - name: Execute Conftest Tests - Table Output
         id: conftest-table
         run: |
@@ -57,6 +38,45 @@ jobs:
           result="${result//$'\r'/'%0D'}"
           echo $result
           echo ::set-output name=result::$result
+#      - name: build container test image
+#        run: |
+#          docker build \
+#            -t container-structure-test:latest .
+
+#      - name: build image
+#        working-directory: arrai
+#        run: |
+#          docker build \
+#            -t arrai:latest .
+#
+#      - name: test structure
+#        id: container-stdout
+#        run: |
+#          result=$(docker run --rm -v $(pwd):/project flopes/container-structure-test-docker test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
+#          result="${result//'%'/'%25'}"
+#          result="${result//$'\n'/'%0A'}"
+#          result="${result//$'\r'/'%0D'}"
+#          echo $result
+#          echo "::set-output name=result::$result"
+      - name: build container test
+        run: |
+          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+      - name: build image
+        working-directory: arrai
+        run: |
+          docker build \
+            -t arrai:latest .
+
+      - name: test structure
+        id: container-stdout
+        run: |
+          result=$(docker run --rm -v $(pwd):/project flopes/container-structure-test-docker test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
+          echo $result
+          echo "::set-output name=result::$result"
+
       - name: Post Results
         uses: unsplash/comment-on-pr@master
         if: ${{ always() }}
