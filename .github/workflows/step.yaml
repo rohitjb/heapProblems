@@ -27,7 +27,7 @@ jobs:
       - name: test structure
         id: container-stdout
         run: |
-          result=$(docker run --rm -v $(pwd):/test-config container-structure-test:latest test --image arrai:latest --config ./grafna_structural_tests.yaml --no-color)
+          result=$(docker run --rm -v $(pwd):/test-config container-structure-test:latest test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
           result="${result//'%'/'%25'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
