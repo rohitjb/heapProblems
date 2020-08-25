@@ -59,8 +59,6 @@ jobs:
         uses: peter-evans/create-or-update-comment@v1.4.2
         with:
           # GITHUB_TOKEN or a repo scoped PAT.
-          token: # optional, default is ${{ github.token }}
-          # The full name of the repository in which to create or update a comment.
           body: |
             ## Conftest Test Results
             ```
