@@ -53,6 +53,7 @@ jobs:
           docker build \
             -t ${IMAGE_NAME}:latest .
       - name: test structure
+        if: github.event.pull_request.opened || github.event.pull_request.reopened
         id: container-stdout
         run: |
           result=$(container-structure-test test --image ${IMAGE_NAME}:latest --config ${CONFIGFILE_PATH} --no-color)
