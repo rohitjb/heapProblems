@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FILE: ./debian9/Dockerfile
+      IMAGE: grafana
+      VERSION: 7.1.2
+      PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel,vonage-status-panel
+      IMAGE_RENDERER: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
