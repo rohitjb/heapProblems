@@ -4,16 +4,17 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     env:
-      FILE: ./debian9/Dockerfile
-      IMAGE: grafana
-      VERSION: 7.1.2
-      PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel,vonage-status-panel
-      IMAGE_RENDERER: true
+      FILE: ./arrai/Dockerfile
+      CONFIGFILE_PATH: ./arrai/tests/structural/arrai_structural_tests.yaml
+      IMAGE_NAME: arrai
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           submodules: true
+      - name: build container test
+        run: |
+          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
       - name: Execute Conftest Tests - Table Output
         id: conftest-table
         run: |
@@ -38,18 +39,15 @@ jobs:
           result="${result//$'\r'/'%0D'}"
           echo $result
           echo ::set-output name=result::$result
-      - name: build container test
-        run: |
-          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
       - name: build image
         working-directory: arrai
         run: |
           docker build \
-            -t arrai:latest .
+            -t ${IMAGE_NAME}:latest .
       - name: test structure
         id: container-stdout
         run: |
-          result=$(container-structure-test test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
+          result=$(container-structure-test test --image ${IMAGE_NAME}:latest --config ${CONFIGFILE_PATH} --no-color)
           result="${result//'%'/'%25'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
@@ -67,7 +65,7 @@ jobs:
             ${{ steps.conftest-table.outputs.result }}
             ${{ steps.conftest-stdout.outputs.result }}
             ```
-            ## container structure Test Results
+            ## Container Structure Test Results
             ```
             ${{ steps.container-stdout.outputs.result }}
             ```
