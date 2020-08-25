@@ -11,18 +11,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+if: github.event.pull_request.opened || github.event.pull_request.reopened
+jobs1:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      FILE: ./arrai/Dockerfile
+      CONFIGFILE_PATH: ./arrai/tests/structural/arrai_structural_tests.yaml
+      IMAGE_NAME: arrai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           submodules: true
       - name: pull request
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         run: echo github.event_name
       - name: build container test
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         run: |
           curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
       - name: Execute Conftest Tests - Table Output
         id: conftest-table
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         run: |
           result=$(docker run --rm --workdir /github/workspace \
             -v $(pwd):/github/workspace \
@@ -34,7 +43,6 @@ jobs:
           echo $result
           echo "::set-output name=result::$result"
       - name: Execute Conftest Tests - Stdout Output
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         id: conftest-stdout
         run: |
           result=$(docker run --rm --workdir /github/workspace \
@@ -47,13 +55,11 @@ jobs:
           echo $result
           echo ::set-output name=result::$result
       - name: build image
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         working-directory: arrai
         run: |
           docker build \
             -t ${IMAGE_NAME}:latest .
       - name: test structure
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         id: container-stdout
         run: |
           result=$(container-structure-test test --image ${IMAGE_NAME}:latest --config ${CONFIGFILE_PATH} --no-color)
@@ -63,7 +69,6 @@ jobs:
           echo $result
           echo "::set-output name=result::$result"
       - name: Post Results
-        if: github.event.pull_request.opened || github.event.pull_request.reopened
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
