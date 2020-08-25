@@ -21,7 +21,7 @@ jobs:
           docker build \
             --build-arg "GF_INSTALL_PLUGINS=${PLUGINS}" \
             --build-arg "GF_INSTALL_IMAGE_RENDERER_PLUGIN=${IMAGE_RENDERER}" \
-            -t docker.pkg.github.com/anzx/containerTest/${IMAGE}:latest .
+            -t docker.pkg.github.com/anzx/container-test/${IMAGE}:latest .
       - name: test structure
         id: container-stdout
         run: |
