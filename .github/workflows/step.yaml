@@ -1,0 +1,74 @@
+name: Structural Tests
+on: [push]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      FILE: ./arrai/Dockerfile
+      CONFIGFILE_PATH: ./arrai/tests/structural/arrai_structural_tests.yaml
+      IMAGE_NAME: arrai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: pull request
+        run: echo github.event_name
+      - name: build container test
+        run: |
+          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
+      - name: Execute Conftest Tests - Table Output
+        id: conftest-table
+        run: |
+          result=$(docker run --rm --workdir /github/workspace \
+            -v $(pwd):/github/workspace \
+            instrumenta/conftest:v0.18.2 \
+            test ${FILE} -o tap --no-color || exit 0)
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
+          echo $result
+          echo "::set-output name=result::$result"
+      - name: Execute Conftest Tests - Stdout Output
+        id: conftest-stdout
+        run: |
+          result=$(docker run --rm --workdir /github/workspace \
+            -v $(pwd):/github/workspace \
+            instrumenta/conftest:v0.18.2 \
+            test ${FILE} --no-color || exit 0)
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
+          echo $result
+          echo ::set-output name=result::$result
+      - name: build image
+        working-directory: arrai
+        run: |
+          docker build \
+            -t ${IMAGE_NAME}:latest .
+      - name: test structure
+        id: container-stdout
+        run: |
+          result=$(container-structure-test test --image ${IMAGE_NAME}:latest --config ${CONFIGFILE_PATH} --no-color)
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
+          echo $result
+          echo "::set-output name=result::$result"
+      - name: Post Results
+        if: contains(github.head_ref, github.base_ref)
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: |
+            ## Conftest Test Results
+            ```
+            ${{ steps.conftest-table.outputs.result }}
+            ${{ steps.conftest-stdout.outputs.result }}
+            ```
+            ## Container Structure Test Results
+            ```
+            ${{ steps.container-stdout.outputs.result }}
+            ```
+          check_for_duplicate_msg: true
