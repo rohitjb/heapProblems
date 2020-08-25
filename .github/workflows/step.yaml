@@ -82,5 +82,3 @@ jobs:
             ${{ steps.container-stdout.outputs.result }}
             ```
           check_for_duplicate_msg: true
-
-
