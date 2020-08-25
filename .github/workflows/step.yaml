@@ -1,5 +1,5 @@
 name: Structural Tests
-on: [push, pull_request]
+on: [push]
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -55,11 +55,13 @@ jobs:
           result="${result//$'\r'/'%0D'}"
           echo $result
           echo "::set-output name=result::$result"
-      - name: Create or Update Comment
-        uses: peter-evans/create-or-update-comment@v1.4.2
+      - name: Post Results
+        uses: unsplash/comment-on-pr@master
+        if: ${{ always() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # GITHUB_TOKEN or a repo scoped PAT.
-          body: |
+          msg: |
             ## Conftest Test Results
             ```
             ${{ steps.conftest-table.outputs.result }}
@@ -69,22 +71,4 @@ jobs:
             ```
             ${{ steps.container-stdout.outputs.result }}
             ```
-          edit-mode: replace
-
-#      - name: Post Results
-#        uses: unsplash/comment-on-pr@master
-#        if: ${{ always() }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          msg: |
-#            ## Conftest Test Results
-#            ```
-#            ${{ steps.conftest-table.outputs.result }}
-#            ${{ steps.conftest-stdout.outputs.result }}
-#            ```
-#            ## container structure Test Results
-#            ```
-#            ${{ steps.container-stdout.outputs.result }}
-#            ```
-#          check_for_duplicate_msg: false
+          check_for_duplicate_msg: true
