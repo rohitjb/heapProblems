@@ -1,5 +1,5 @@
 name: Structural Tests
-on: [push]
+on: [pull_request]
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
           result=$(docker run --rm --workdir /github/workspace \
             -v $(pwd):/github/workspace \
             instrumenta/conftest:v0.18.2 \
-            test ${FILE} -o tap || exit 0)
+            test ${FILE} -o tap --no-color || exit 0)
           result="${result//'%'/'%25'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
@@ -38,26 +38,6 @@ jobs:
           result="${result//$'\r'/'%0D'}"
           echo $result
           echo ::set-output name=result::$result
-#      - name: build container test image
-#        run: |
-#          docker build \
-#            -t container-structure-test:latest .
-
-#      - name: build image
-#        working-directory: arrai
-#        run: |
-#          docker build \
-#            -t arrai:latest .
-#
-#      - name: test structure
-#        id: container-stdout
-#        run: |
-#          result=$(docker run --rm -v $(pwd):/project flopes/container-structure-test-docker test --image arrai:latest --config ./arrai/tests/structural/arrai_structural_tests.yaml --no-color)
-#          result="${result//'%'/'%25'}"
-#          result="${result//$'\n'/'%0A'}"
-#          result="${result//$'\r'/'%0D'}"
-#          echo $result
-#          echo "::set-output name=result::$result"
       - name: build container test
         run: |
           curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && sudo mv container-structure-test-linux-amd64 /usr/local/bin/container-structure-test
@@ -66,7 +46,6 @@ jobs:
         run: |
           docker build \
             -t arrai:latest .
-
       - name: test structure
         id: container-stdout
         run: |
@@ -76,7 +55,6 @@ jobs:
           result="${result//$'\r'/'%0D'}"
           echo $result
           echo "::set-output name=result::$result"
-
       - name: Post Results
         uses: unsplash/comment-on-pr@master
         if: ${{ always() }}
@@ -93,5 +71,4 @@ jobs:
             ```
             ${{ steps.container-stdout.outputs.result }}
             ```
-
           check_for_duplicate_msg: false
