@@ -23,7 +23,7 @@ jobs:
           docker build \
             -t container-structure-test:latest .
       - name: build image
-        working-directory: debian9
+        working-directory: grafana
         run: |
           docker build \
             --build-arg "GF_INSTALL_PLUGINS=${PLUGINS}" \
