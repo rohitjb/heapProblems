@@ -16,6 +16,7 @@ jobs:
           service_account_key: ${{ secrets.TOKEN }}
           export_default_credentials: true
       - run: gsutil cp report.json gs://services/
+
 #      - uses: actions-hub/gcloud@master
 #        env:
 #          PROJECT_ID: ${{ secrets.PROJECT_ID }}
