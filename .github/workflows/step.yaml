@@ -11,7 +11,7 @@ jobs:
         run: curl https://jsonplaceholder.typicode.com/todos/1 | tee report.json
       - uses: actions-hub/gcloud@master
         env:
-          PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.TOKEN }}
         with:
           args: cp report.json gs://services/
