@@ -9,10 +9,19 @@ jobs:
         uses: actions/checkout@v2
       - name: get data for report
         run: curl https://jsonplaceholder.typicode.com/todos/1 | tee report.json
-      - uses: actions-hub/gcloud@master
-        env:
-          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          APPLICATION_CREDENTIALS: ${{ secrets.TOKEN }}
+      - name: Hello world action step
+        uses: customGitAction/hello-world-docker-action@v1
+        id: hello
         with:
-          args: cp report.json gs://demo-services/
-          cli: gsutil
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+#      - uses: actions-hub/gcloud@master
+#        env:
+#          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+#          APPLICATION_CREDENTIALS: ${{ secrets.TOKEN }}
+#        with:
+#          args: cp report.json gs://demo-services/
+#          cli: gsutil
