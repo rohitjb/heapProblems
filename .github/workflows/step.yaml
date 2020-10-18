@@ -10,7 +10,7 @@ jobs:
       - name: get data for report
         run: curl https://jsonplaceholder.typicode.com/todos/1 | tee report.json
       - name: Hello world action step
-        uses: customGitAction/hello-world-docker-action@v1
+        uses: actions/hello-world-docker-action@v1
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
