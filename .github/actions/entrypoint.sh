@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -l
 #BASE_URL='https://blackduck.platform-services.services-platdev.x.gcpnp.anz'
 #AUTHENTICATE='api/tokens/authenticate'
 #

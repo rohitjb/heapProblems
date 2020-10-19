@@ -1,7 +1,5 @@
 # Hello world docker action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
-
 ## Inputs
 
 ### `access-token`
@@ -12,4 +10,4 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 uses: ./
 with:
-  access-token: 'Mona the Octocat'
+  access-token: 'sgdfb'
