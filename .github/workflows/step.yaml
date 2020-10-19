@@ -7,16 +7,15 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: get data for report
-        run: curl https://jsonplaceholder.typicode.com/todos/1 | tee report.json
       - name: Hello world action step
-        uses: actions/hello-world-docker-action@v1
+        uses: actions/hello-world-docker-action@master
         id: hello
         with:
-          who-to-greet: 'Mona the Octocat'
+          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
+          url: https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/2bf5dadf-770e-4dbb-a54c-a2e78c7d6a7c/versions/7c85d352-df94-4aa5-84cd-f90f8ccd4629/components.json
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The report was ${{ steps.hello.outputs.report }}"
 
 #      - uses: actions-hub/gcloud@master
 #        env:
