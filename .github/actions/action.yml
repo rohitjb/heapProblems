@@ -11,7 +11,7 @@ inputs:
       default: ''
 outputs:
   report:
-    description: 'This is the balckduck-scan report in json format'
+    description: 'This is the blackduck-scan report in json format'
 runs:
   using: 'docker'
   image: 'Dockerfile'
