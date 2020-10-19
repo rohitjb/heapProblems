@@ -10,7 +10,6 @@ jobs:
       - name: report downloader step
         with:
           access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
-
 #      - uses: actions-hub/gcloud@master
 #        env:
 #          PROJECT_ID: ${{ secrets.PROJECT_ID }}
