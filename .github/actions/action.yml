@@ -4,11 +4,7 @@ inputs:
   access-token:
     description: 'acess token used to authenticate the blackduck'
     required: true
-    default: ''
-    url:
-      description: 'This is the url which will provide the blackduck scan report'
-      required: true
-      default: ''
+    default: 'default'
 outputs:
   report:
     description: 'This is the blackduck-scan report in json format'
@@ -17,4 +13,3 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.access-token }}
-    - ${{ inputs.url }}
