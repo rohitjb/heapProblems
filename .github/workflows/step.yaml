@@ -7,12 +7,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: report downloader step
-        uses: ./
-        id: hello
-        with:
-          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
-          url: https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/2bf5dadf-770e-4dbb-a54c-a2e78c7d6a7c/versions/7c85d352-df94-4aa5-84cd-f90f8ccd4629/components.json
+#      - name: report downloader step
+#        uses: ./
+#        with:
+#          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
 
 #      - uses: actions-hub/gcloud@master
 #        env:
