@@ -1,10 +1,10 @@
 #!/bin/sh
+BASE_URL='https://blackduck.platform-services.services-platdev.x.gcpnp.anz'
+AUTHENTICATE='api/tokens/authenticate'
 
-echo "Downloading latest container-structure-test binary..."
+TOKEN="token $1"
+COMPONENT_JSON_URL="$2"
 
-wget -O container-structure-test -nv "${CONTAINER_STRUCTURE_TEST_DOWNLOAD_URL}" \
-  && mv container-structure-test /usr/local/bin \
-  && chmod +x /usr/local/bin/container-structure-test \
-  && export PATH=$PATH:/usr/local/bin
+token=$(curl --request POST --url ${BASE_URL}/${AUTHENTICATE} --header "Authorization: $TOKEN" | jq -r '.bearerToken')
+curl --request GET --url ${COMPONENT_JSON_URL} --header "Authorization: Bearer $token" | tee report.json
 
-container-structure-test $@

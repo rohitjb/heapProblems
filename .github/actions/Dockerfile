@@ -1,17 +1,7 @@
-FROM alpine:3.7
+# Container image that runs your code
+FROM alpine:3.10
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-LABEL maintainer="florian.lopes@outlook.com"
-
-ENV CONTAINER_STRUCTURE_TEST_DOWNLOAD_URL https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64
-
-COPY entrypoint.sh /app/entrypoint.sh
-
-RUN chmod +x /app/entrypoint.sh
-
-VOLUME /test-config
-
-WORKDIR /test-config
-
-ENTRYPOINT ["/app/entrypoint.sh"]
-
-CMD ["--help"]
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
