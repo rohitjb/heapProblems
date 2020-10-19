@@ -7,10 +7,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-#      - name: report downloader step
-#        uses: ./
-#        with:
-#          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
+      - name: report downloader step
+        uses: ./
+        with:
+          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
 
 #      - uses: actions-hub/gcloud@master
 #        env:
