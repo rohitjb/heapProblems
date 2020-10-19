@@ -8,7 +8,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Hello world action step
-        uses: actions/hello-world-docker-action@v2
+        uses: actions/hello-world-docker-action@v1
         id: hello
         with:
           access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
