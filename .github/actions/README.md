@@ -4,18 +4,12 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 
 ## Inputs
 
-### `who-to-greet`
+### `access-token`
 
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
+**Required** The name of the person to greet. Default `"default"`.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v1
+uses: ./
 with:
-  who-to-greet: 'Mona the Octocat'
+  access-token: 'Mona the Octocat'
