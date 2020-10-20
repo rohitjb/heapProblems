@@ -8,9 +8,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: report downloader step
-        uses: ./
+        uses: actions/blackduck-report-downloader
         with:
-          access-token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
+          token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
 #      - uses: actions-hub/gcloud@master
 #        env:
 #          PROJECT_ID: ${{ secrets.PROJECT_ID }}
