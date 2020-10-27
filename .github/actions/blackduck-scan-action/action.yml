@@ -14,6 +14,6 @@ runs:
       run: echo ${{ inputs.blackduck-log }}
     - shell: bash
       run: echo token ${{ inputs.token }}
-    - run: ${{ github.action_path }}/blackduck.sh
+    - run: ${{ github.action_path }}/blackduck.sh ${{ inputs.blackduck-log }}
       id: report-id
       shell: bash
