@@ -14,4 +14,4 @@ runs:
       run: |
         BASE_URL='https://blackduck.platform-services.services-platdev.x.gcpnp.anz'
         AUTHENTICATE='api/tokens/authenticate'
-        curl --request POST --url ${BASE_URL}/${AUTHENTICATE} --header "Authorization: token ${{ inputs.token }}"
+        curl --request POST --url https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/tokens/authenticate --header "Authorization: token ${{ inputs.token }}"
