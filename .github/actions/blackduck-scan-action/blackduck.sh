@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Goodbye"
-echo Hello ${inputs.token} 
+echo Hello $inputs.token
