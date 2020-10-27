@@ -1,0 +1,19 @@
+name: 'blackduck scan'
+description: 'it authenticate and gets black duck scan report'
+inputs:
+  token: 
+    description: 'token to authenticate'
+    required: true
+  blackduck-log: 
+    description: 'blackduck log'
+    required: true
+runs:
+  using: "composite"
+  steps: 
+    - run: echo Hello ${{ inputs.token }}.
+      shell: bash
+    - run: echo world ${{ blackduck-log }}.
+      shell: bash
+    - run: ${{ github.action_path }}/goodbye.sh
+      id: report-id
+      shell: bash

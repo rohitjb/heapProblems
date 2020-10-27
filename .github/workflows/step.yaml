@@ -7,14 +7,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: report downloader step
-        uses: actions/blackduck-report-downloader@v4
+      - name: Run coverage tool
+        uses: ./.github/actions/blackduck-scan-action
         with:
           token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
-#      - uses: actions-hub/gcloud@master
-#        env:
-#          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-#          APPLICATION_CREDENTIALS: ${{ secrets.TOKEN }}
-#        with:
-#          args: cp report.json gs://demo-services/
-#          cli: gsutil
+          blackduck-log: "fsdfmsfmsmfklsfmskld lksdfskfsklc slkdfjskflskl sldkf"
