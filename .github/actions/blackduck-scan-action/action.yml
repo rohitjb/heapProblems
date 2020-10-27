@@ -10,8 +10,12 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: echo world ${{ inputs.blackduck-log }}.
-      shell: bash
-    - run: ${{ github.action_path }}/blackduck.sh
-      id: report-id
-      shell: bash
+    - shell: bash
+      run: |
+        BASE_URL='https://blackduck.platform-services.services-platdev.x.gcpnp.anz'
+        AUTHENTICATE='api/tokens/authenticate'
+        bearerToken=$(curl --request POST --url ${BASE_URL}/${AUTHENTICATE} --header "Authorization: token ${{ inputs.token }}" | jq -r '.bearerToken')
+        grep '/components' ${{ inputs.blackduck-log }} | tee blackduck_urls.txt
+        temp=$(egrep -o 'https?://[^ ]+' blackduck_urls.txt)
+        urlsArray=($temp)
+        curl --request GET --url ${urlsArray[0]}".json" --header "Authorization: Bearer ${bearerToken}"

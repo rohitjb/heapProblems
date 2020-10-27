@@ -1,0 +1,103 @@
+INFO[2020-10-27T02:07:05Z] project version is "heads/" (from flag --project-version) 
+DEBU[2020-10-27T02:07:06Z] Logged in with auth token successfully       
+INFO[2020-10-27T02:07:06Z] resolving project name using query "name:github.com/anzx/fabric-platform-service" 
+INFO[2020-10-27T02:07:06Z] resolved project to "https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac" 
+INFO[2020-10-27T02:07:06Z] getting all versions of project "https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac" 
+INFO[2020-10-27T02:07:06Z] project "https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac" has 3 version(s) 
+INFO[2020-10-27T02:07:06Z] no project versions have to be deleted because there are less than the maximum number of project versions (9) 
+INFO[2020-10-27T02:07:06Z] the following arguments will be passed to the wrapped synposys detector process: [java -jar /tmp/synopsys-detect.jar --blackduck.url=https://blackduck.platform-services.services-platdev.x.gcpnp.anz/ --blackduck.api.token=***** --detect.project.name=github.com/anzx/fabric-platform-service --detect.project.version.name=heads/ --detect.source.path=. --detect.tools=SIGNATURE_SCAN] 
+______     _            _
+|  _  \   | |          | |
+| | | |___| |_ ___  ___| |_
+| | | / _ \ __/ _ \/ __| __|
+| |/ /  __/ ||  __/ (__| |_
+|___/ \___|\__\___|\___|\__|
+
+
+Detect Version: 6.5.0
+
+2020-10-27 02:07:09 INFO  [main] --- 
+2020-10-27 02:07:09 INFO  [main] --- Current property values:
+2020-10-27 02:07:09 INFO  [main] --- --property = value [notes]
+2020-10-27 02:07:09 INFO  [main] --- ------------------------------------------------------------
+2020-10-27 02:07:09 INFO  [main] --- blackduck.api.token = **************************************************************************************************** [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- blackduck.url = https://blackduck.platform-services.services-platdev.x.gcpnp.anz/ [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- detect.project.name = github.com/anzx/fabric-platform-service [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- detect.project.version.name = heads/ [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- detect.source.path = . [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- detect.tools = SIGNATURE_SCAN [cmd] 
+2020-10-27 02:07:09 INFO  [main] --- ------------------------------------------------------------
+2020-10-27 02:07:09 INFO  [main] --- 
+2020-10-27 02:07:09 INFO  [main] --- Tilde's will be automatically resolved to USER HOME.
+2020-10-27 02:07:09 INFO  [main] --- Source directory: /workspace/.
+2020-10-27 02:07:09 INFO  [main] --- Output directory: /root/blackduck
+2020-10-27 02:07:09 INFO  [main] --- Run directory: /root/blackduck/runs/2020-10-27-02-07-08-802
+2020-10-27 02:07:09 INFO  [main] --- 
+2020-10-27 02:07:10 INFO  [main] --- A successful connection was made.
+2020-10-27 02:07:10 INFO  [main] --- Connection to the Black Duck server was successful.
+2020-10-27 02:07:11 INFO  [main] --- Successfully connected to Black Duck (version 2019.12.0)!
+2020-10-27 02:07:14 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:14 INFO  [main] --- Polaris tools will not be run.
+2020-10-27 02:07:14 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:14 INFO  [main] --- Docker tool will not be run.
+2020-10-27 02:07:14 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:14 INFO  [main] --- Bazel tool will not be run.
+2020-10-27 02:07:14 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:14 INFO  [main] --- Detector tool will not be run.
+2020-10-27 02:07:14 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:14 INFO  [main] --- Project name: github.com/anzx/fabric-platform-service
+2020-10-27 02:07:14 INFO  [main] --- Project version: heads/
+2020-10-27 02:07:15 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:15 INFO  [main] --- Will include the signature scanner tool.
+2020-10-27 02:07:15 INFO  [main] --- No scan targets provided - registering the source path /workspace/. to scan
+2020-10-27 02:07:16 INFO  [main] --- The Black Duck Signature Scanner downloaded/found successfully: /root/blackduck/tools
+2020-10-27 02:07:16 INFO  [main] --- Starting the Black Duck Signature Scan commands.
+2020-10-27 02:07:16 INFO  [pool-3-thread-1] --- Black Duck CLI command: /root/blackduck/tools/Black_Duck_Scan_Installation/scan.cli-2019.12.0/jre/bin/java -Done-jar.silent=true -Done-jar.jar.path=/root/blackduck/tools/Black_Duck_Scan_Installation/scan.cli-2019.12.0/lib/cache/scan.cli.impl-standalone.jar -Xmx4096m -jar /root/blackduck/tools/Black_Duck_Scan_Installation/scan.cli-2019.12.0/lib/scan.cli-2019.12.0-standalone.jar --no-prompt --scheme https --host blackduck.platform-services.services-platdev.x.gcpnp.anz --port 443 -v --logDir /root/blackduck/runs/2020-10-27-02-07-08-802/scan/BlackDuckScanOutput/2020-10-27_02-07-16-365_1 --statusWriteDir /root/blackduck/runs/2020-10-27-02-07-08-802/scan/BlackDuckScanOutput/2020-10-27_02-07-16-365_1 --project github.com/anzx/fabric-platform-service --release heads/ --name workspace/github.com/anzx/fabric-platform-service/heads/ scan /workspace
+2020-10-27 02:07:38 INFO  [pool-3-thread-1] --- 
+2020-10-27 02:07:38 INFO  [pool-3-thread-1] --- Black Duck Signature Scanner return code: 0
+2020-10-27 02:07:38 INFO  [pool-3-thread-1] --- You can view the logs at: '/root/blackduck/runs/2020-10-27-02-07-08-802/scan/BlackDuckScanOutput/2020-10-27_02-07-16-365_1'
+2020-10-27 02:07:38 INFO  [main] --- Completed the Black Duck Signature Scan commands.
+2020-10-27 02:07:38 INFO  [main] --- Signature scanner actions finished.
+2020-10-27 02:07:38 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:38 INFO  [main] --- Binary scan tool will not be run.
+2020-10-27 02:07:38 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:38 INFO  [main] --- Vulnerability Impact Analysis tool will not be run.
+2020-10-27 02:07:38 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:38 INFO  [main] --- Will perform Black Duck post actions.
+2020-10-27 02:07:38 INFO  [main] --- Black Duck actions have finished.
+2020-10-27 02:07:38 INFO  [main] --- All tools have finished.
+2020-10-27 02:07:38 INFO  [main] --- ----------------------------------
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- Creating status file: /root/blackduck/runs/2020-10-27-02-07-08-802/status/status.json
+2020-10-27 02:07:38 INFO  [main] --- Status file has been deleted.  To preserve status file, turn off cleanup actions.
+2020-10-27 02:07:38 INFO  [main] --- Cleaning up directory: /root/blackduck/runs/2020-10-27-02-07-08-802
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- ======== Detect Result ========
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- Black Duck Project BOM: https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac/versions/25b54ccd-5f8b-45cc-b612-fc46fdeac14f/components
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- ======== Detect Status ========
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- Signature scan / Snippet scan on /workspace: SUCCESS
+2020-10-27 02:07:38 INFO  [main] --- Overall Status: SUCCESS - Detect exited successfully.
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- ===============================
+2020-10-27 02:07:38 INFO  [main] --- 
+2020-10-27 02:07:38 INFO  [main] --- Detect duration: 00h 00m 29s 620ms
+INFO[2020-10-27T02:07:38Z] the URL of the bill of materials (BOM) will be https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac/versions/25b54ccd-5f8b-45cc-b612-fc46fdeac14f/components 
+INFO[2020-10-27T02:07:38Z] code-locations/0/scan-summaries/1/scan is not completed: scan status is "SCANNING" 
+INFO[2020-10-27T02:07:39Z] code-locations/0/scan-summaries/2/scan completed 
+INFO[2020-10-27T02:07:39Z] BOM is not up-to-date: some scans are not completed and there are no related jobs when at least 1 is expected (unless 30.0 seconds elapses) 
+INFO[2020-10-27T02:07:39Z] checking again whether or not BOM is up-to-date in 10.0 seconds 
+INFO[2020-10-27T02:07:49Z] code-locations/0/scan-summaries/1/scan is not completed: scan status is "SCANNING" 
+INFO[2020-10-27T02:07:49Z] BOM is not up-to-date: some scans are not completed and there are no related jobs when at least 1 is expected (unless 30.0 seconds elapses) 
+INFO[2020-10-27T02:07:49Z] checking again whether or not BOM is up-to-date in 10.0 seconds 
+INFO[2020-10-27T02:07:59Z] code-locations/0/scan-summaries/1/scan is not completed: scan status is "BOM_VERSION_CHECK" 
+INFO[2020-10-27T02:08:00Z] BOM is not up-to-date: some scans are not completed and there are no related jobs when at least 1 is expected (unless 30.0 seconds elapses) 
+INFO[2020-10-27T02:08:00Z] checking again whether or not BOM is up-to-date in 10.0 seconds 
+INFO[2020-10-27T02:08:10Z] code-locations/0/scan-summaries/1/scan is not completed: scan status is "BUILDING_BOM" 
+INFO[2020-10-27T02:08:10Z] BOM is up-to-date                            
+INFO[2020-10-27T02:08:11Z] BOM completed in 64 seconds                  
+INFO[2020-10-27T02:08:11Z] the URL of the bill of materials (BOM) is https://blackduck.platform-services.services-platdev.x.gcpnp.anz/api/projects/7a042f2e-e893-4d78-8c9c-d4e28d4050ac/versions/25b54ccd-5f8b-45cc-b612-fc46fdeac14f/components 
+INFO[2020-10-27T02:08:11Z] SUCCESS: BOM satisfies policy: no components have critical, high or unknown risks 
