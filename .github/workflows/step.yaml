@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Run coverage tool
+      - name: Run blackduck
         uses: ./.github/actions/blackduck-scan-action
         with:
-          token: ${{ secrets.FABRIC_BLACKDUCK_SCAN_TOKEN }}
+          token: "M2JhNWNjM2EtM2M0My00MTk0LThiNDEtODU4ZDA2YmVjZDhhOjdhOTI5ZWZhLTY0NWMtNDU5Ni1iNjVjLTBlMWY2MTliYzNlZg=="
           blackduck-log: "fsdfmsfmsmfklsfmskld lksdfskfsklc slkdfjskflskl sldkf"
