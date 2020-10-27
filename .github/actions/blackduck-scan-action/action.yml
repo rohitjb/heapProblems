@@ -10,8 +10,6 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: echo Hello ${{ inputs.token }}.
-      shell: bash
     - run: echo world ${{ inputs.blackduck-log }}.
       shell: bash
     - run: ${{ github.action_path }}/blackduck.sh
