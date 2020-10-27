@@ -1,0 +1,26 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  env:
+    - key: ANZ
+      value: true
+
+licenseTests:
+- debian: true
+  files: ["/usr/local/share/ca-certificates/anz_global_ca_01_2041_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_global_ca_01_v2_2041_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_global_ca_02_2041_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_global_ca_02_v2_2041_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_global_root_ca_2023_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_global_root_ca_2066_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_global_root_ca_v2_2066_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_01_2031_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_01_v2_2041_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_01_v3_2029_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_02_2031_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_02_v2_2041_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_ca_02_v3_2029_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_root_ca_2023_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_root_ca_2035_sha1.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_root_ca_v2_2066_sha2.crt",
+          "/usr/local/share/ca-certificates/anz_globaltest_root_ca_v3_2034_sha2.crt"]

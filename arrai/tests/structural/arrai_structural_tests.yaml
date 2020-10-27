@@ -1,0 +1,6 @@
+schemaVersion: 2.0.0
+
+fileExistenceTests:
+  - name: 'test to check arrai binary at expected path'
+    path: '/usr/bin/arrai'
+    shouldExist: true
